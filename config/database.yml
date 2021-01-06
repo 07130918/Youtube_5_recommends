@@ -14,14 +14,13 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: ENV['DATABASE_PASSWORD_KEY']
+  password: <%= ENV['DATABASE_PASSWORD_KEY'] %>
   host: localhost
 
 development:
   <<: *default
   database: youtube_5_recommends_development
   username: user_development
-  password: ENV['DATABASE_PASSWORD_KEY']
   
 
 # Warning: The database defined as "test" will be erased and
@@ -31,7 +30,6 @@ test:
   <<: *default
   database: youtube_5_recommends_test
   username: user_test
-  password: ENV['DATABASE_PASSWORD_KEY']
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -57,4 +55,3 @@ production:
   <<: *default
   database: youtube_5_recommends_production
   username: user_production
-  password: ENV['DATABASE_PASSWORD_KEY']
