@@ -1,11 +1,11 @@
 require 'google/apis/youtube_v3'
 require 'active_support/all'
 
-GOOGLE_API_KEY= ""
+GOOGLE_API_KEY= "AIzaSyBrBb9I23aFpWkgRVi-psz9EI2-Qpij1eY"
 
 def find_videos(keyword, after: 1.months.ago, before: Time.now) #検索キーワードと検索範囲を変えれるように引数に値を取っています
   service = Google::Apis::YoutubeV3::YouTubeService.new
-  service.key = GOOGLE_API_KEY
+  service.key = "AIzaSyBrBb9I23aFpWkgRVi-psz9EI2-Qpij1eY"
   next_page_token = nil
   opt = {
     q: keyword,
