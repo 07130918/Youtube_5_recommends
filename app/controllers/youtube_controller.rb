@@ -3,23 +3,26 @@ class YoutubeController < ApplicationController
   @@service = Google::Apis::YoutubeV3::YouTubeService.new
   @@service.key = GOOGLE_API_KEY
   
+  def _order
+    ["date", "rating", "relevance", "title", "videoCount", "viewCount"].sample
+  end
+
   def find_videos(keyword)
-    next_page_token = nil
     opt = {
       q: keyword,
       type: 'video',
-      max_results: 1
+      max_results: 1,
+      order: _order,
     }
     @@service.list_searches(:snippet, opt)
   end
 
   # def good_video
   #   opt = {
-  #     # type: 'video',
   #     max_results: 5,
-  #     myRating: 'like'
+  #     my_rating: 'like'
   #   }
-  #   @service.list_videos("snippet", opt)
+  #   @@service.list_videos("snippet", opt)
   # end
 
   def index
