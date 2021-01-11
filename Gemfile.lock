@@ -236,8 +236,6 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yt (0.32.6)
-      activesupport
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -249,6 +247,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   dotenv-rails
   google-api-client (= 0.9.20)
+  googleauth
   jbuilder (~> 2.7)
   mysql2 (~> 0.5)
   puma (~> 5.0)
@@ -261,7 +260,6 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
-  yt (= 0.32.6)
 
 RUBY VERSION
    ruby 2.5.8p224
