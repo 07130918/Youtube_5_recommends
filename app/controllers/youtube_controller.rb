@@ -36,14 +36,14 @@ class YoutubeController < ApplicationController
   end
 
   def get_accecc_token
-    # 更新トークンとアクセス トークンの承認コードを交換する
     # parseでuriを区切れるようになる
     uri = URI.parse('https://accounts.google.com/o/oauth2/token')
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    # oauth 2.0 の承認を突破した段階でurlのcode=~~の部分を取得
+    # OAuth 2.0 の承認を突破した段階でurlのcode=~~の部分を取得
+    # @redirect_codeは後にアクセストークン、更新トークンと交換
     # リクエスト送信に必要なため
     response_hash = URI.decode_www_form(request.fullpath).to_h
     @redirect_code = response_hash['/?code']
@@ -59,6 +59,8 @@ class YoutubeController < ApplicationController
     # リクエストのレスポンスからトークン取得
     response = http.request(req)
     @access_token = JSON.parse(response.body)['access_token']
+
+    # 後で(使うなら)refresh_tokenもreturn
     return @access_token
   end
 
@@ -80,11 +82,11 @@ class YoutubeController < ApplicationController
 
     header = { Authorization: "Bearer #{@access_token}" }
 
-    req = Net::HTTP::Get.new(uri.request_uri, header)
+    req = Net::HTTP::Get.new(uri.path)
+    # uri.request_uriとuri.pathの違い
+    req.initialize_http_header(headers)
     req['X-API-KEY'] = GOOGLE_API_KEY
-    @response = https.request(req)
-    # @response = response.body.force_encoding("UTF-8")
-    #   # リクエストの送信・レスポンスの取得
-    #   @response = https.request(request)
+    response = https.request(req)
+    @response = response.body.force_encoding('UTF-8')
   end
 end
