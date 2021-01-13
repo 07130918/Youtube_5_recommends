@@ -1,24 +1,33 @@
 <% @youtube_data.items.each do |item| %>
-  <% snippet = item.snippet %>
-  <p><%= snippet.title %></p>
-  <div class="youtube__screen">
-    <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= item.id.video_id %>" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+<% snippet = item.snippet %>
+<p><%= snippet.title %></p>
+<div class="youtube__screen">
+  <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= item.id.video_id %>"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 <% end %>
 
 <div>
-<%= link_to 'あなたのgoogleアカウントを認証してください', 'https://accounts.google.com/o/oauth2/auth?client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&redirect_uri=http://localhost:3000/&response_type=code&scope=https://www.googleapis.com/auth/youtube.readonly' %>
+  <%= link_to 'あなたのgoogleアカウントを認証してください', 'https://accounts.google.com/o/oauth2/auth?client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&redirect_uri=http://localhost:3000/&response_type=code&scope=https://www.googleapis.com/auth/youtube.readonly' %>
 </div>
 
 <div>
-<%=@token%>
+  <%= @access_token %>
 </div>
-<%=@redirect_code%>
+ <%# <div> %>
+  <%= @redirect_code %>
+<%# </div> %>
+<div>
+  <%= @response %>
+</div>
 
-<% @videos.items.each do |item| %>
-  <% snippet = item.snippet %>
-  <p><%= snippet.title %></p>
-  <div class="youtube__screen">
-    <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= item.id %>" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-<% end %>
+<%# @videos.items.each do |item| %>
+<%# snippet = item.snippet %>
+<%# <p> %>
+<%#= snippet.title %>
+<%# </p> %>
+<%# <div class="youtube__screen"> %>
+  <%# <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= item.id %>
+    <%# allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> %>
+<%# </div> %>
+<%# end %>

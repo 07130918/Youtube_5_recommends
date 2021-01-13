@@ -11,7 +11,7 @@ class YoutubeController < ApplicationController
   def index
     @youtube_data = find_videos('加藤純一')
     api_response
-    @videos = like_videos
+    # @videos = like_videos
   end
 
   private
@@ -40,19 +40,26 @@ class YoutubeController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    req = Net::HTTP::Post.new(uri.path)
-    # urlのcode=~~の部分を取得
-    @redirect_code = request.params["code"]
-    req.set_form_data({
-      'Contant-Type' => 'application/x-www-form-urlencoded',
-      'code' => "#{@redirect_code}",
-      'client_id' => '660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com',
-      'client_secret' => CLIENT_SECRET,
-      'redirect_uri' => 'http://localhost:3000/',
-      'grant_type'=> 'authorization_code',
-    })
-    @response = http.request(req)
-    @token = JSON.parse(@response.body)["access_token"]
-    
+
+    # oauth 2.0 の承認を突破した段階でurlのcode=~~の部分を取得
+    # リクエスト送信に必要なため
+    response_hash = URI.decode_www_form(request.fullpath).to_h
+    @redirect_code = response_hash['/?code']
+    req_header = { 'Contant-Type' => 'application/x-www-form-urlencoded' }
+    # POST リクエストを https://accounts.google.com/o/oauth2/token に送信
+    req = Net::HTTP::Post.new(uri.request_uri, req_header)
+    req.body =
+      "code=#{
+        @redirect_code
+      }&client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&client_secret=#{
+        CLIENT_SECRET
+      }&redirect_uri=http://localhost:3000/&grant_type=authorization_code"
+
+    # リクエストのレスポンスからトークン取得
+    response = http.request(req)
+    @access_token = JSON.parse(response.body)['access_token']
+
+    # GETリクエストでアクセストークンを利用する YouTube Data API の呼び出し
+  
   end
 end
