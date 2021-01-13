@@ -67,10 +67,12 @@ class YoutubeController < ApplicationController
 
     # GETリクエストでアクセストークンを利用する YouTube Data API の呼び出し
     # 今やりたい事→ちゃんと条件通りにyoutubeからgetリクエストで情報をもらう
-    option = {}
+    option = { my_rating: 'like', max_results: 1 }
     uri =
       URI.parse(
-        'https://www.googleapis.com/youtube/v3/videos?part=snippet&myRating=like&maxResults=1',
+        "https://www.googleapis.com/youtube/v3/videos?part=snippet&myRating=#{
+          option[:my_rating]
+        }&maxResults=#{option[:max_results]}",
       )
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
