@@ -3,6 +3,7 @@ class YoutubeController < ApplicationController
   require 'uri'
   require 'json'
   GOOGLE_API_KEY = ENV['GOOGLE_APP_SECRET']
+  CLIENT_ID = ENV['CLIENT_ID']
   CLIENT_SECRET = ENV['CLIENT_SECRET']
 
   @@service = Google::Apis::YoutubeV3::YouTubeService.new
@@ -10,7 +11,7 @@ class YoutubeController < ApplicationController
 
   def index
     @youtube_data = find_videos('加藤純一')
-    api_response
+    youtube_data_api
     # @videos = like_videos
   end
 
@@ -34,7 +35,8 @@ class YoutubeController < ApplicationController
     @@service.list_videos('snippet', option)
   end
 
-  def api_response
+  def get_accecc_token
+    # 更新トークンとアクセス トークンの承認コードを交換する
     # parseでuriを区切れるようになる
     uri = URI.parse('https://accounts.google.com/o/oauth2/token')
     http = Net::HTTP.new(uri.host, uri.port)
@@ -46,20 +48,41 @@ class YoutubeController < ApplicationController
     response_hash = URI.decode_www_form(request.fullpath).to_h
     @redirect_code = response_hash['/?code']
     req_header = { 'Contant-Type' => 'application/x-www-form-urlencoded' }
+
     # POST リクエストを https://accounts.google.com/o/oauth2/token に送信
     req = Net::HTTP::Post.new(uri.request_uri, req_header)
     req.body =
-      "code=#{
-        @redirect_code
-      }&client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&client_secret=#{
+      "code=#{@redirect_code}&client_id=#{CLIENT_ID}&client_secret=#{
         CLIENT_SECRET
       }&redirect_uri=http://localhost:3000/&grant_type=authorization_code"
 
     # リクエストのレスポンスからトークン取得
     response = http.request(req)
     @access_token = JSON.parse(response.body)['access_token']
+    return @access_token
+  end
+
+  def youtube_data_api
+    get_accecc_token
 
     # GETリクエストでアクセストークンを利用する YouTube Data API の呼び出し
-  
+    # 今やりたい事→ちゃんと条件通りにyoutubeからgetリクエストで情報をもらう
+    option = {}
+    uri =
+      URI.parse(
+        'https://www.googleapis.com/youtube/v3/videos?part=snippet&myRating=like&maxResults=1',
+      )
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    header = { Authorization: "Bearer #{@access_token}" }
+
+    req = Net::HTTP::Get.new(uri.request_uri, header)
+    req['X-API-KEY'] = GOOGLE_API_KEY
+    @response = https.request(req)
+    # @response = response.body.force_encoding("UTF-8")
+    #   # リクエストの送信・レスポンスの取得
+    #   @response = https.request(request)
   end
 end
