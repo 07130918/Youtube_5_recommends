@@ -28,9 +28,9 @@ class YoutubeController < ApplicationController
 
   def like_videos
     option = {
-      max_results: 5,
-      # my_rating: 'like',
-      chart: 'most_popular',
+      max_results: 1,
+      my_rating: 'like',
+      # chart: 'most_popular',
     }
     @@service.list_videos('snippet', option)
   end
@@ -74,19 +74,18 @@ class YoutubeController < ApplicationController
       URI.parse(
         "https://www.googleapis.com/youtube/v3/videos?part=snippet&myRating=#{
           option[:my_rating]
-        }&maxResults=#{option[:max_results]}",
+        }&maxResults=#{option[:max_results]}"
       )
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
     https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    header = { Authorization: "Bearer #{@access_token}" }
-
-    req = Net::HTTP::Get.new(uri.path)
-    # uri.request_uriとuri.pathの違い
+    header = { Authorization: "Bearer #{@access_token}"}
+    # request_uriは/youtube/v3/videos?part=snippet&myRating=like&maxResults=1を指す
+    req = Net::HTTP::Get.new(uri.request_uri)
     req.initialize_http_header(headers)
-    req['X-API-KEY'] = GOOGLE_API_KEY
+    # req['X-API-KEY'] = GOOGLE_API_KEY
     response = https.request(req)
-    @response = response.body.force_encoding('UTF-8')
+    @response = response.body
   end
 end
