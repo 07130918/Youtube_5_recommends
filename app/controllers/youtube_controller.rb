@@ -3,14 +3,13 @@ class YoutubeController < ApplicationController
   require 'uri'
   require 'json'
   GOOGLE_API_KEY = ENV['GOOGLE_APP_SECRET']
-  CLIENT_ID = ENV['CLIENT_ID']
   CLIENT_SECRET = ENV['CLIENT_SECRET']
 
   @@service = Google::Apis::YoutubeV3::YouTubeService.new
   @@service.key = GOOGLE_API_KEY
 
   def index
-    @youtube_data = find_videos('加藤純一')
+    @youtube_data = find_videos('加藤純一切り抜き')
     youtube_data_api
     # @videos = like_videos
   end
@@ -29,8 +28,8 @@ class YoutubeController < ApplicationController
   def like_videos
     option = {
       max_results: 1,
-      my_rating: 'like',
-      # chart: 'most_popular',
+      # my_rating: 'like',
+      chart: 'most_popular',
     }
     @@service.list_videos('snippet', option)
   end
@@ -52,16 +51,17 @@ class YoutubeController < ApplicationController
     # POST リクエストを https://accounts.google.com/o/oauth2/token に送信
     req = Net::HTTP::Post.new(uri.request_uri, req_header)
     req.body =
-      "code=#{@redirect_code}&client_id=#{CLIENT_ID}&client_secret=#{
+      "code=#{@redirect_code}&client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&client_secret=#{
         CLIENT_SECRET
       }&redirect_uri=http://localhost:3000/&grant_type=authorization_code"
 
     # リクエストのレスポンスからトークン取得
     response = http.request(req)
+    @response = response
     @access_token = JSON.parse(response.body)['access_token']
 
     # 後で(使うなら)refresh_tokenもreturn
-    return @access_token
+    # return @access_token
   end
 
   def youtube_data_api
@@ -78,14 +78,15 @@ class YoutubeController < ApplicationController
       )
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
-    https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    # https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    header = { Authorization: "Bearer #{@access_token}"}
+    header = { "Authorization" => "Bearer #{@access_token}"}
+
     # request_uriは/youtube/v3/videos?part=snippet&myRating=like&maxResults=1を指す
     req = Net::HTTP::Get.new(uri.request_uri)
     req.initialize_http_header(headers)
-    # req['X-API-KEY'] = GOOGLE_API_KEY
+
     response = https.request(req)
-    @response = response.body
+    response = response.body
   end
 end

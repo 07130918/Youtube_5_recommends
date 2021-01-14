@@ -11,14 +11,17 @@
 
 <div>
   <%# アカウント認証するとcode発行 %>
-  <%= link_to "あなたのgoogleアカウントを認証してください", "https://accounts.google.com/o/oauth2/auth?client_id=#{ENV['CLIENT_ID']}&redirect_uri=http://localhost:3000/&response_type=code&scope=https://www.googleapis.com/auth/youtube.readonly"%>
+  <%= link_to "あなたのgoogleアカウントを認証してください", "https://accounts.google.com/o/oauth2/auth?client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&redirect_uri=http://localhost:3000/&response_type=code&scope=https://www.googleapis.com/auth/youtube.readonly"%>
 </div>
 
 <div>
   <%= @access_token %>
 </div>
 <div>
-  <%= @response %>
+  <%= @response.body %>
+</div>
+<div>
+  <%= @redirect_code %>
 </div>
 
 <%# @videos.items.each do |item| %>
