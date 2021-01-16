@@ -37,8 +37,13 @@
       <div class="side-bar-menu__children__history">履歴</div>
       <div class="side-bar-menu__children__my_video">自分の動画</div>
       <div class="side-bar-menu__children__leter">後で見る</div>
-      <div class="side-bar-menu__children__good">後で見る</div>
+      <div class="side-bar-menu__children__good">高く評価した動画</div>
       <div class="side-bar-menu__children__more">もっと見る</div>
+    </div>
+    <div class="side-bar-menu__bottom">
+      <%= link_to "JunTube", juntubes_path, class:'side-bar-menu__bottom__juntube' %>
+      <%# アカウント認証するとcode発行 %>
+      <%= link_to "このボックスをクリックしgoogleアカウントを認証するとアプリが使えます", "https://accounts.google.com/o/oauth2/auth?client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&redirect_uri=http://localhost:3000/&scope=https://www.googleapis.com/auth/youtube.readonly&response_type=code", class:'side-bar-menu__bottom__oauth'%>
     </div>
   </div>
   <%= yield %>
