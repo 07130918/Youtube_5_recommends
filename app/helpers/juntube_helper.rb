@@ -1,0 +1,2 @@
+module JuntubeHelper
+end
