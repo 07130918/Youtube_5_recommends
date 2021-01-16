@@ -1,6 +1,6 @@
 require "test_helper"
 
-class JuntubeControllerTest < ActionDispatch::IntegrationTest
+class JuntubesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

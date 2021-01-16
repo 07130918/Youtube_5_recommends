@@ -1,4 +1,4 @@
-class JuntubeController < ApplicationController
+class JuntubesController < ApplicationController
   @@service = Google::Apis::YoutubeV3::YouTubeService.new
   @@service.key = GOOGLE_API_KEY
 

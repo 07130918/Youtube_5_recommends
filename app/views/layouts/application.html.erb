@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Youtube5Recommends</title>
+    <title>Youtube_5_Recommends</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="body">
+    <header class="header"></header>
+    <div class="side-bar-menu">
+      <div class="toggele"></div>
+      <div class="logo"></div>
+      <div class="side-bar-menu__home">ホーム</div>
+      <div class="side-bar-menu__up">急上昇</div>
+      <div class="side-bar-menu__sub">登録チャンネル</div>
+      <div class="side-bar-menu__library">ライブラリ</div>
+      <div class="side-bar-menu__history">履歴</div>
+      <div class="side-bar-menu__my_video">自分の動画</div>
+      <div class="side-bar-menu__leter">後で見る</div>
+      <div class="side-bar-menu__good">後で見る</div>
+      <div class="side-bar-menu__more">もっと見る</div>
+    </div>
     <%= yield %>
   </body>
 </html>
