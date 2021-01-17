@@ -20,7 +20,9 @@
 <body class="body">
   <%= render partial: "layouts/header" %>
   <%= render partial: "layouts/aside" %>
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 
 </html>

@@ -10,5 +10,11 @@
           <%= link_to image_tag("logo.png"), "https://www.youtube.com",target: :_blank %>
         </div>
       </div>
+
+      <div class="search">
+        <%= form_with url: "/youtube" do |f| %>
+          <%= f.text_field :dummy, placeholder: "検索", method: :get, class: "search__box" %>
+        <% end %>
+      </div>
     </div>
   </header>

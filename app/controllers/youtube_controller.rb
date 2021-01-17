@@ -6,6 +6,10 @@ class YoutubeController < ApplicationController
     youtube_data_api
   end
 
+  def create
+    redirect_to root_path
+  end
+
   private
 
   # コードとアクセストークンを交換する関数
