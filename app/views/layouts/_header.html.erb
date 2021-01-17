@@ -11,10 +11,15 @@
         </div>
       </div>
 
-      <div class="search">
-        <%= form_with url: "/youtube" do |f| %>
-          <%= f.text_field :dummy, placeholder: "検索", method: :get, class: "search__box" %>
-        <% end %>
+      <%= form_with url: "/youtube" do |f| %>
+        <div class="search">
+          <%= f.text_field :dummy, placeholder: "\s\s\s検索", method: :get, class: "search__box" %>
+          <input type="image" name="submit" src="assets/images/yt-search.png" class="search__btn">
+        </div>
+      <% end %>
+
+      <div class="header-right">
+        <div class="yt-3"></div>
       </div>
     </div>
   </header>

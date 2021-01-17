@@ -84,16 +84,63 @@
 }
 
 .header .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  left: 30vw;
+  left: 28vw;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .header .search input[type="text"] {
-  width: 30vw;
-  height: 5vh;
+  width: 40vw;
+  height: 3.8vh;
+  border: solid 1px #303030;
+  background-color: #181818;
+}
+
+.header .search input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5em;
+}
+
+.header .search input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5em;
+}
+
+.header .search input::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5em;
+}
+
+.header .search input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5em;
+}
+
+.header .search__btn {
+  display: block;
+  height: 3.6vh;
+  border: solid 1px #303030;
+  width: 4vw;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.header .header-right .yt-3 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("/assets/images/yt-3.png");
+  position: absolute;
+  right: 4vw;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: 40%;
+  width: 160px;
 }
 
 .side-bar-menu {
