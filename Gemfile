@@ -54,3 +54,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
 gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
 gem 'googleauth'
+gem 'sprockets', '~> 3.7.2'

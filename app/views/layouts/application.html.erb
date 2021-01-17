@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <%# <link rel="icon" href="../images/youtube_icon.png"> %>
+  <%= favicon_link_tag('favicon_youtube.ico') %>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Roboto:wght@100&display=swap"
     rel="stylesheet">
@@ -25,21 +27,49 @@
         <span></span>
       </div>
       <div class="logo">
-
         <%= link_to image_tag("logo.png"), "https://www.youtube.com",target: :_blank %>
       </div>
     </div>
+
     <div class="side-bar-menu__children">
-      <div class="side-bar-menu__children__home">ホーム</div>
-      <div class="side-bar-menu__children__up">急上昇</div>
-      <div class="side-bar-menu__children__sub">登録チャンネル</div>
-      <div class="side-bar-menu__children__library">ライブラリ</div>
-      <div class="side-bar-menu__children__history">履歴</div>
-      <div class="side-bar-menu__children__my_video">自分の動画</div>
-      <div class="side-bar-menu__children__leter">後で見る</div>
-      <div class="side-bar-menu__children__good">高く評価した動画</div>
-      <div class="side-bar-menu__children__more">もっと見る</div>
+      <div class="has_image side-bar-menu__children__home">
+        <div class="menu-image" style="background-image: url('/assets/images/home.png');"></div>
+        <%=link_to "ホーム", root_path %>
+      </div>
+      <div class="has_image side-bar-menu__children__up">
+        <div class="menu-image" style="background-image: url('/assets/images/up.png');"></div>
+        <p>急上昇</p>
+      </div>
+      <div class="has_image side-bar-menu__children__sub">
+        <div class="menu-image" style="background-image: url('/assets/images/sub.png');"></div>
+        <p>登録チャンネル</p>
+      </div>
+      <div class="has_image side-bar-menu__children__library">
+        <div class="menu-image" style="background-image: url('/assets/images/library.png');"></div>
+        <p>ライブラリ</p>
+      </div>
+      <div class="has_image side-bar-menu__children__history">
+        <div class="menu-image" style="background-image: url('/assets/images/history.png');"></div>
+        <p>履歴</p>
+      </div>
+      <div class="has_image side-bar-menu__children__my_video">
+        <div class="menu-image" style="background-image: url('/assets/images/my_video.png');"></div>
+        <p>自分の動画</p>
+      </div>
+      <div class="has_image side-bar-menu__children__later">
+        <div class="menu-image" style="background-image: url('/assets/images/later.png');"></div>
+        <p>後で見る</p>
+      </div>
+      <div class="has_image side-bar-menu__children__good">
+        <div class="menu-image" style="background-image: url('/assets/images/good.png');"></div>
+        <p>高く評価した動画</p>
+      </div>
+      <div class="has_image side-bar-menu__children__more">
+        <div class="menu-image" style="background-image: url('/assets/images/more.png');"></div>
+        <p>もっと見る</p>
+      </div>
     </div>
+
     <div class="side-bar-menu__bottom">
       <%= link_to "JunTube", juntubes_path, class:'side-bar-menu__bottom__juntube' %>
       <%# アカウント認証するとcode発行 %>
