@@ -18,64 +18,8 @@
 </head>
 
 <body class="body">
-  <header class="header"></header>
-  <div class="side-bar-menu">
-    <div class="side-bar-menu__top">
-      <div class="toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="logo">
-        <%= link_to image_tag("logo.png"), "https://www.youtube.com",target: :_blank %>
-      </div>
-    </div>
-
-    <div class="side-bar-menu__children">
-      <div class="has_image side-bar-menu__children__home">
-        <div class="menu-image" style="background-image: url('/assets/images/home.png');"></div>
-        <%=link_to "ホーム", root_path %>
-      </div>
-      <div class="has_image side-bar-menu__children__up">
-        <div class="menu-image" style="background-image: url('/assets/images/up.png');"></div>
-        <p>急上昇</p>
-      </div>
-      <div class="has_image side-bar-menu__children__sub">
-        <div class="menu-image" style="background-image: url('/assets/images/sub.png');"></div>
-        <p>登録チャンネル</p>
-      </div>
-      <div class="has_image side-bar-menu__children__library">
-        <div class="menu-image" style="background-image: url('/assets/images/library.png');"></div>
-        <p>ライブラリ</p>
-      </div>
-      <div class="has_image side-bar-menu__children__history">
-        <div class="menu-image" style="background-image: url('/assets/images/history.png');"></div>
-        <p>履歴</p>
-      </div>
-      <div class="has_image side-bar-menu__children__my_video">
-        <div class="menu-image" style="background-image: url('/assets/images/my_video.png');"></div>
-        <p>自分の動画</p>
-      </div>
-      <div class="has_image side-bar-menu__children__later">
-        <div class="menu-image" style="background-image: url('/assets/images/later.png');"></div>
-        <p>後で見る</p>
-      </div>
-      <div class="has_image side-bar-menu__children__good">
-        <div class="menu-image" style="background-image: url('/assets/images/good.png');"></div>
-        <p>高く評価した動画</p>
-      </div>
-      <div class="has_image side-bar-menu__children__more">
-        <div class="menu-image" style="background-image: url('/assets/images/more.png');"></div>
-        <p>もっと見る</p>
-      </div>
-    </div>
-
-    <div class="side-bar-menu__bottom">
-      <%= link_to "JunTube", juntubes_path, class:'side-bar-menu__bottom__juntube' %>
-      <%# アカウント認証するとcode発行 %>
-      <%= link_to "このボックスをクリックしgoogleアカウントを認証するとアプリが使えます", "https://accounts.google.com/o/oauth2/auth?client_id=660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com&redirect_uri=http://localhost:3000/&scope=https://www.googleapis.com/auth/youtube.readonly&response_type=code", class:'side-bar-menu__bottom__oauth'%>
-    </div>
-  </div>
+  <%= render partial: "layouts/header" %>
+  <%= render partial: "layouts/aside" %>
   <%= yield %>
 </body>
 

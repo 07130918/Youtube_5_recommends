@@ -5,59 +5,66 @@
 }
 
 .header {
+  display: flex;
+  align-items: center;
   height: 7.4vh;
   background-color: #212121;
+  
+  &__menu {
+    &__top {
+      display: flex;
+      align-items: center;
+      width: 17vw;
+      padding-left: 2vw;
+    }
+
+    &__toggle {
+      position: relative;
+      height: 24px;
+      width: 24px;
+      display: inline-block;
+      cursor: pointer;
+
+      & span {
+        position: absolute;
+        left: 0;
+        height: 2px;
+        width: 20px;
+        background-color: #fff;
+        border-radius: 2px;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+      & span:nth-child(1) {
+        top: 6px;
+      }
+      & span:nth-child(2) {
+        top: 11px;
+      }
+      & span:nth-child(3) {
+        top: 16px;
+      }
+    }
+    .logo {
+      height: 45%;
+      width: 45%;
+      margin-left: 1vw;
+    }
+  }
 }
 
 .side-bar-menu {
   position: fixed;
-  top: 0;
+  top: 7.4vh;
   left: 0;
   bottom: 0;
   font-size: 1rem;
   width: 17vw;
+  height: 92.6vh;
   background-color: #212121;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
-
-  &__top {
-    display: flex;
-    align-items: center;
-    height: 7.4vh;
-    padding-left: 2vw;
-    .logo {
-      margin-left: 1vw;
-      width: 40%;
-    }
-  }
-  .toggle {
-    position: relative;
-    height: 24px;
-    width: 24px;
-    display: inline-block;
-    cursor: pointer;
-
-    & span {
-      position: absolute;
-      left: 0;
-      height: 2px;
-      width: 24px;
-      background-color: #fff;
-      border-radius: 2px;
-      display: inline-block;
-      box-sizing: border-box;
-    }
-    & span:nth-child(1) {
-      top: 6px;
-    }
-    & span:nth-child(2) {
-      top: 10px;
-    }
-    & span:nth-child(3) {
-      top: 14px;
-    }
-  }
 
   &__children {
     display: flex;
@@ -80,7 +87,7 @@
         width: 10%;
       }
     }
-      
+
     &__home {
       cursor: pointer;
     }

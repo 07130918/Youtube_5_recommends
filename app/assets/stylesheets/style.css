@@ -5,24 +5,6 @@
 }
 
 .header {
-  height: 7.4vh;
-  background-color: #212121;
-}
-
-.side-bar-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  font-size: 1rem;
-  width: 17vw;
-  background-color: #212121;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.side-bar-menu__top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,15 +12,21 @@
       -ms-flex-align: center;
           align-items: center;
   height: 7.4vh;
+  background-color: #212121;
+}
+
+.header__menu__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 17vw;
   padding-left: 2vw;
 }
 
-.side-bar-menu__top .logo {
-  margin-left: 1vw;
-  width: 40%;
-}
-
-.side-bar-menu .toggle {
+.header__menu__toggle {
   position: relative;
   height: 24px;
   width: 24px;
@@ -46,11 +34,11 @@
   cursor: pointer;
 }
 
-.side-bar-menu .toggle span {
+.header__menu__toggle span {
   position: absolute;
   left: 0;
   height: 2px;
-  width: 24px;
+  width: 20px;
   background-color: #fff;
   border-radius: 2px;
   display: inline-block;
@@ -58,16 +46,36 @@
           box-sizing: border-box;
 }
 
-.side-bar-menu .toggle span:nth-child(1) {
+.header__menu__toggle span:nth-child(1) {
   top: 6px;
 }
 
-.side-bar-menu .toggle span:nth-child(2) {
-  top: 10px;
+.header__menu__toggle span:nth-child(2) {
+  top: 11px;
 }
 
-.side-bar-menu .toggle span:nth-child(3) {
-  top: 14px;
+.header__menu__toggle span:nth-child(3) {
+  top: 16px;
+}
+
+.header__menu .logo {
+  height: 45%;
+  width: 45%;
+  margin-left: 1vw;
+}
+
+.side-bar-menu {
+  position: fixed;
+  top: 7.4vh;
+  left: 0;
+  bottom: 0;
+  font-size: 1rem;
+  width: 17vw;
+  height: 92.6vh;
+  background-color: #212121;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .side-bar-menu__children {
