@@ -33,8 +33,8 @@ class YoutubeController < ApplicationController
       client_id:
         '660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com',
       client_secret: "#{CLIENT_SECRET}",
-      redirect_uri: "http://localhost:3000/",
-      grant_type: "authorization_code"
+      redirect_uri: 'http://localhost:3000/',
+      grant_type: 'authorization_code',
     }
     req = Net::HTTP::Post.new(uri.path)
     req.set_form_data(params)
@@ -51,28 +51,32 @@ class YoutubeController < ApplicationController
   # アクセストークンを利用し承認されたリクエストも行える Yoyube Data Api 呼び出し関数
   def youtube_data_api
     get_access_token
+    if @access_token
+      option = { my_rating: 'like', max_results: 1 }
+      uri =
+        URI.parse(
+          "https://www.googleapis.com/youtube/v3/videos?part=snippet&maxResults=#{
+            option[:max_results]
+          }&myRating=#{option[:my_rating]}",
+        )
 
-    option = {
-      my_rating: "like",
-      max_results: 1
-    }
-    uri = URI.parse("https://www.googleapis.com/youtube/v3/videos?part=snippet&maxResults=#{option[:max_results]}&myRating=#{option[:my_rating]}")
+      https = Net::HTTP.new(uri.host, uri.port)
+      https.use_ssl = true
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    https = Net::HTTP.new(uri.host, uri.port)
-    https.use_ssl = true
-    https.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    
-    headers = { 'Authorization' => "Bearer #{@access_token}" }
+      headers = { 'Authorization' => "Bearer #{@access_token}" }
 
-    # request_uriはyoutube/v3/videos?part=snippet&maxResults=#{option[:max_results]}&myRating=#{option[:my_rating]}を指す
-    req = Net::HTTP::Get.new(uri.request_uri)
-    req.initialize_http_header(headers)
+      # request_uriはyoutube/v3/videos?part=snippet&maxResults=#{option[:max_results]}&myRating=#{option[:my_rating]}を指す
+      req = Net::HTTP::Get.new(uri.request_uri)
+      req.initialize_http_header(headers)
 
-    # エンコード→操作しやすいようにハッシュに
-    #ハッシュドポテト
-    @response = https.request(req)
-    @response = @response.body.force_encoding("UTF-8")
-    @response = eval("#{@response}")
-    return @response
+      # エンコード→操作しやすいようにハッシュに
+      #ハッシュドポテト
+      response = https.request(req)
+      response = response.body.force_encoding('UTF-8')
+      items = JSON.parse(response).to_a[2]
+      @response = JSON.parse(response)
+      return @response
+    end
   end
 end
