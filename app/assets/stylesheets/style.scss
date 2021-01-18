@@ -189,8 +189,31 @@
 // index.html.erb
 .youtube {
   &__cover {
-    margin: 2vh 0 0 10vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 4vh;
   }
+
+  &__content {
+    margin: 0 auto;
+  }
+
+  &__screen {
+    padding-bottom: 4vh;
+  }
+}
+
+.video_title {
+  // height: 5rem;
+  // background-color: #212121;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.video_date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
 }
 
   .noauth {

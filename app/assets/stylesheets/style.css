@@ -236,7 +236,32 @@
 }
 
 .youtube__cover {
-  margin: 2vh 0 0 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 4vh;
+}
+
+.youtube__content {
+  margin: 0 auto;
+}
+
+.youtube__screen {
+  padding-bottom: 4vh;
+}
+
+.video_title {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.video_date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
 }
 
 .noauth {
