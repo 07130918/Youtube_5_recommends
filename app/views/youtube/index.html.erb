@@ -1,20 +1,19 @@
   <div class="container">
     <div class="youtube__cover">
       <%  if @access_token %>
-        <% @response['items'].each do |i| %>
-          <div class="yotube__content">
+        <% @items.each do |i| %>
+          <div class="youtube__content">
             <div class="youtube__screen">
               <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= i['id'] %>"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="video_title"><%= i['snippet']['title'] %></div>
-            <%# time = Time.strftime(i['snippet']['publishedAt']) %>
            <div class="video_date"><%= i['snippet']['publishedAt'].slice(0,10) %></div>
           </div>
         <% end %>
       <% else %>
         <%# アクセストークンを得ていないときはdummyの画面 %>
-        <div class="yotube__content">
+        <div class="youtube__content">
         <div class="youtube__screen">
           <div class="noauth"></div>
         </div>

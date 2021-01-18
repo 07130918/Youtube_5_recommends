@@ -243,10 +243,12 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 4vh;
+  overflow: hidden;
 }
 
 .youtube__content {
-  margin: 0 auto;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
 .youtube__screen {

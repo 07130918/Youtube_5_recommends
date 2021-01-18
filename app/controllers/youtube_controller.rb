@@ -7,6 +7,7 @@ class YoutubeController < ApplicationController
   end
 
   def create
+    #もし検索ボックスから何かされても大丈夫なように
     redirect_to root_path
   end
 
@@ -52,7 +53,7 @@ class YoutubeController < ApplicationController
   def youtube_data_api
     get_access_token
     if @access_token
-      option = { my_rating: 'like', max_results: 1 }
+      option = { my_rating: 'like', max_results: 5 }
       uri =
         URI.parse(
           "https://www.googleapis.com/youtube/v3/videos?part=snippet&maxResults=#{
@@ -74,9 +75,10 @@ class YoutubeController < ApplicationController
       #ハッシュドポテト
       response = https.request(req)
       response = response.body.force_encoding('UTF-8')
-      items = JSON.parse(response).to_a[2]
-      @response = JSON.parse(response)
-      return @response
+      response = JSON.parse(response)
+      # ランダムに5つの動画を返す
+      @items = response['items'].shuffle[0..4]
+      return @items
     end
   end
 end

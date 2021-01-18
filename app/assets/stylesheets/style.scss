@@ -192,10 +192,12 @@
     display: flex;
     justify-content: center;
     margin-top: 4vh;
+    overflow: hidden;
   }
 
   &__content {
-    margin: 0 auto;
+    margin-left: 2vw;
+    margin-right: 2vw;
   }
 
   &__screen {
@@ -204,8 +206,6 @@
 }
 
 .video_title {
-  // height: 5rem;
-  // background-color: #212121;
   color: #fff;
   font-size: 1.4rem;
 }
