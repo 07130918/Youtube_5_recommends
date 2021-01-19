@@ -1,45 +1,41 @@
   <div class="container">
     <div class="youtube__cover">
       <%  if @access_token %>
-        <% @items.each do |i| %>
-          <div class="youtube__content">
-            <div class="youtube__screen">
-              <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= i['id'] %>"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <% @items.each do |i| %>
+                <div class="youtube__content swiper-slide">
+                    <div class="youtube__screen">
+                      <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= i['id'] %>" frameborder="no"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-status">
+                      <div class="video_title"><%= i['snippet']['title'] %></div>
+                      <div class="video_date"><%= i['snippet']['publishedAt'].slice(0,10) %></div>
+                    </div>
+                </div>
+              <% end %>
             </div>
-            <div class="video_title"><%= i['snippet']['title'] %></div>
-           <div class="video_date"><%= i['snippet']['publishedAt'].slice(0,10) %></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
           </div>
-        <% end %>
       <% else %>
         <%# アクセストークンを得ていないときはdummyの画面 %>
-        <div class="youtube__content">
-        <div class="youtube__screen">
-          <div class="noauth"></div>
-        </div>
-          <div class="video_title">テスト</div>
-          <div class="video_date">Y年m月d日</div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="youtube__content swiper-slide">
+              <div class="youtube__screen">
+                <div class="dummy-frame">
+                </div>
+              </div>
+              <div class="video-status">
+                <div class="video_title">youtube_5_recommends</div>
+                <div class="video_date">あなたが過去に高評価した動画を5本とってきます<br>このwebアプリはgoogleの承認を通ることで使えます。<br>さあ、サイドバーにある承認をクリックしアプリをはじめましょう!</div>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-  </div>
-
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
-      <div class="swiper-slide">Slide 10</div>
-    </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- Add Arrows -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>

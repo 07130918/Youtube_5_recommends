@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   new Swiper(".swiper-container", {
     slidesPerView: 1,
     spaceBetween: 30,
-    loop: false,
+    loop: true,
     effect: "coverflow",
 
     pagination: {
