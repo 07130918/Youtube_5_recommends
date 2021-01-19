@@ -24,13 +24,27 @@ UIはYouTubeになるべく寄せるようにしています パッと見はYouT
 
 * Database mySQL(このアプリはデータベースを必要としません)　　
 　　
+  
+
+## YouTube Data APIについて
 ### YouTube Data APIを使う  
 このAPIを使うならこのようにkeyを格納しておきます
+  
+  
 ```Ruby
  @@service = Google::Apis::YoutubeV3::YouTubeService.new
  @@service.key = YOUR_API_KEY
 ```
   
+#### 認証を必要としないリクエスト
+認証を必要としないリクエストは実に容易く行うことができます  
+例えば特定のキーワードで検索した動画をとってくるにはこれだけです。
+  
+  
+```Ruby
+    option = { q: keyword, type: 'video' }
+    @@service.list_searches('snippet', option)
+```
 
 ## 認証から表示までのフロー  
 ### 1. リクエストの送信 
