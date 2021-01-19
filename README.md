@@ -25,7 +25,9 @@ UIはYouTubeになるべく寄せるようにしています パッと見はYouT
 * Database mySQL(このアプリはデータベースを必要としません)　　
 　　
   
-
+*****  
+  
+  
 ## YouTube Data APIについて
 ### YouTube Data APIを使う  
 このAPIを使うならこのようにkeyを格納しておきます
