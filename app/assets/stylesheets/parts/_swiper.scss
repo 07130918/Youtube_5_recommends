@@ -1,0 +1,24 @@
+// swiper
+.swiper-container {
+  width: 67.5vw;
+  padding: 0 4vw;
+}
+
+.swiper-button-next,
+.swiper-button-prev
+ {
+  background-image: url("/assets/images/arrow.png");
+  background-size: cover;
+  background-position: center;
+}
+.swiper-button-prev {
+  transform: scale(-1, 1);
+}
+
+// swiper-pagination
+.swiper-container-horizontal>.swiper-pagination-bullets {
+  bottom: 8vh;
+  background-color: #212121;
+  width: 20%;
+  margin: 0 25.4vw;
+}
