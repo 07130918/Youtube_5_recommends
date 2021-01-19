@@ -53,7 +53,7 @@ class YoutubeController < ApplicationController
   def youtube_data_api
     get_access_token
     if @access_token
-      option = { my_rating: 'like', max_results: 5 }
+      option = { my_rating: 'like', max_results: 50 }
       uri =
         URI.parse(
           "https://www.googleapis.com/youtube/v3/videos?part=snippet&maxResults=#{

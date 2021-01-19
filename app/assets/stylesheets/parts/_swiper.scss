@@ -17,8 +17,12 @@
 
 // swiper-pagination
 .swiper-container-horizontal>.swiper-pagination-bullets {
-  bottom: 8vh;
+  display: flex;
+  align-items: center;
+  bottom: 12vh;
   background-color: #212121;
   width: 20%;
   margin: 0 25.4vw;
+  justify-content: center;
+  height: 2vh;
 }
