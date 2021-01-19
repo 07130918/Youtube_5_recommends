@@ -20,17 +20,21 @@ UIはYouTubeになるべく寄せるようにしています パッと見はYouT
 
 * JavaScript Library Swiper.js version 6.4.5
 
-* API YouTube Data API <https://developers.google.com/youtube/v3/docs?hl=ja%2Fs%2Fresults%2F%3Fq%3Dscopes>
+* API YouTube Data API v3 <https://developers.google.com/youtube/v3/docs?hl=ja%2Fs%2Fresults%2F%3Fq%3Dscopes>
 
 * Database mySQL(このアプリはデータベースを必要としません)　　
 　　
-  
+### YouTube Data APIを使う  
+このAPIを使うならこのようにkeyを格納しておきます
+```Ruby
+ @@service = Google::Apis::YoutubeV3::YouTubeService.new
+ @@service.key = YOUR_API_KEY
+```
   
 
 ## 認証から表示までのフロー  
-### 1. アクセストークンの取得  
-viewからリクエストを送りユーザーが承認したらredirect_uriに追加されたcodeパラメーターを取得  
-codeパラメーターを含めたPOSTリクエストを<https://accounts.google.com/o/oauth2/token>に投げるとアクセストークンをレスポンスとして返してくれます  
+### 1. リクエストの送信 
+viewからリクエストを送ります  
 
 ```html
     <%= link_to "このボックスをクリックしgoogleアカウントを認証するとアプリが使えます", "https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=REDIRECT_URI&scope=https://www.googleapis.com/auth/youtube&response_type=code"%>
@@ -38,6 +42,9 @@ codeパラメーターを含めたPOSTリクエストを<https://accounts.google
   
   
   
+### 2. アクセストークンの取得
+ユーザーが承認したらredirect_uriに追加されたcodeパラメーターを取得  
+codeパラメーターを含めたPOSTリクエストを<https://accounts.google.com/o/oauth2/token>に投げるとアクセストークンをレスポンスとして返してくれます  
 そしてアクセストークンの取得を試みます。
 ```Ruby
     response_hash = URI.decode_www_form(request.fullpath).to_h
@@ -67,9 +74,9 @@ codeパラメーターを含めたPOSTリクエストを<https://accounts.google
 ```
 
    
-### 2. YouTube Data API の呼び出し  
+### 3. YouTube Data API の呼び出し  
 アクセストークンを取得した後、承認済みのAPIリクエストを送信します
-OAuth認証を挟んだのは認証を挟まないととってこれないオプションがあるためです  
+OAuth認証を挟んだのは認証を挟まない使用できないオプションがあるためです  
   
 ```Ruby
    option = { my_rating: 'like', max_results: 50 }
