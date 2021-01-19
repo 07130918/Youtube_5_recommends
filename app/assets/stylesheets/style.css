@@ -286,10 +286,24 @@
 }
 
 .dummy-frame {
+  position: relative;
   width: 100%;
   height: 500px;
   background-image: url("/assets/images/root/1.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.dummy-frame .copy-right {
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+  font-size: 1px;
+}
+
+.dummy-frame .copy-link {
+  text-decoration: none;
+  color: #fff;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.6);
 }
 /*# sourceMappingURL=style.css.map */
