@@ -26,7 +26,13 @@
   }
 
   &__screen {
-    padding-bottom: 4vh;
+    margin-bottom: 6vh;
+    width: 889px;
+    height: 500px;
+  }
+
+  &__screen-frame {
+    margin-bottom: 2vh;
   }
 }
 

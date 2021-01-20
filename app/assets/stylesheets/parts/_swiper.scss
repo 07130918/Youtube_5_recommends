@@ -19,10 +19,11 @@
 .swiper-container-horizontal>.swiper-pagination-bullets {
   display: flex;
   align-items: center;
-  bottom: 12vh;
+  justify-content: center;
+  position: absolute;
   background-color: #212121;
   width: 20%;
-  margin: 0 25.4vw;
-  justify-content: center;
   height: 2vh;
+  margin: 0 25.4vw;
+  top: 80%;
 }

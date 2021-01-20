@@ -6,7 +6,7 @@
               <% @items.each do |i| %>
                 <div class="youtube__content swiper-slide">
                     <div class="youtube__screen">
-                      <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= i['id'] %>" frameborder="no"
+                      <iframe class="youtube__screen-frame" width="889" height="500" src="https://www.youtube.com/embed/<%= i['id'] %>" frameborder="no"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-status">
