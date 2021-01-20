@@ -44,7 +44,7 @@ class YoutubeController < ApplicationController
     # リクエストのレスポンスからトークン取得
     response = http.request(req)
     @access_token = JSON.parse(response.body)['access_token']
-
+    @response_body = JSON.parse(response.body)
     # 後で(使うなら)refresh_tokenもreturn
     return @access_token
   end
