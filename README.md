@@ -8,7 +8,7 @@ UIはYouTubeになるべく寄せるようにしています パッと見はYouT
 <img width="1128" alt="スクリーンショット 2021-01-19 163920" src="https://user-images.githubusercontent.com/70265286/105003100-960c6400-5a75-11eb-8bc4-aa8708844d25.png">  
 
 そして認証を通すとこのようなviewになります  
-<img width="1128" alt="スクリーンショット 2021-01-19 122220" src="https://user-images.githubusercontent.com/70265286/105003592-31053e00-5a76-11eb-8b75-0a771cd94283.png">
+<img width="1128" alt="スクリーンショット 2021-01-20 095147" src="https://user-images.githubusercontent.com/70265286/105111870-3198e580-5b05-11eb-9152-d4849bd7ee3a.png">
 　　
   
   
