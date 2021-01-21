@@ -11,10 +11,10 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8mb4
+  encoding: utf8
   pool: 5
   username: root
-  password: DATABASE_PASSWORD_KEY
+  password: "<%= ENV['DATABASE_PASSWORD_KEY'] %>"
   host: localhost
 
 development:
@@ -53,5 +53,6 @@ test:
 #
 production:
   <<: *default
-  database: youtube_5_recommends_production
-  username: user_production
+  database: <%= ENV['DB_NAME'] %> 
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
