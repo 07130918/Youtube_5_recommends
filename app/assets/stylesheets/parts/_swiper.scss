@@ -5,18 +5,17 @@
 }
 
 .swiper-button-next,
-.swiper-button-prev
- {
-  background-image: url("/assets/images/arrow.png");
+.swiper-button-prev {
   background-size: cover;
   background-position: center;
+  background-image: url("arrow.png");
 }
 .swiper-button-prev {
   transform: scale(-1, 1);
 }
 
 // swiper-pagination
-.swiper-container-horizontal>.swiper-pagination-bullets {
+.swiper-container-horizontal > .swiper-pagination-bullets {
   display: flex;
   align-items: center;
   justify-content: center;

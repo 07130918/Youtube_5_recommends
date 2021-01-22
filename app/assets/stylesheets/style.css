@@ -217,9 +217,9 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-  background-image: url("/assets/images/arrow.png");
   background-size: cover;
   background-position: center;
+  background-image: url("arrow.png");
 }
 
 .swiper-button-prev {
