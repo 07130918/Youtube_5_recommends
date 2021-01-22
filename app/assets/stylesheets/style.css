@@ -123,7 +123,7 @@
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   height: 40%;
-  width: 160px;
+  width: 140px;
 }
 
 .side-bar-menu {
@@ -131,12 +131,11 @@
   top: 7.4vh;
   left: 0;
   bottom: 0;
-  font-size: 1rem;
   width: 17vw;
   height: 92.6vh;
   background-color: #212121;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -166,13 +165,6 @@
 
 .side-bar-menu__children .has_image:hover {
   background-color: rgba(40, 40, 40, 0.8);
-}
-
-.side-bar-menu__children .has_image .menu-image {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 10%;
 }
 
 .side-bar-menu__children__home {
