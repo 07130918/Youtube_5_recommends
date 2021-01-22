@@ -34,7 +34,7 @@ class YoutubeController < ApplicationController
       client_id:
         '660241016882-pl2v6ilg0k0vqi3eqdqekv6risb565pp.apps.googleusercontent.com',
       client_secret: "#{CLIENT_SECRET}",
-      redirect_uri: 'https://youtube5recommends.herokuapp.com/',
+      redirect_uri: 'http://localhost:3000/',
       grant_type: 'authorization_code',
     }
     req = Net::HTTP::Post.new(uri.path)
