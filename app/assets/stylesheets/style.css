@@ -75,6 +75,8 @@
   height: 3.8vh;
   border: solid 1px #303030;
   background-color: #181818;
+  outline: none;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .header .search input::-webkit-input-placeholder {
@@ -99,10 +101,15 @@
 
 .header .search__btn {
   display: block;
+  border: none;
+  outline: none;
+  background: transparent;
   height: 3.6vh;
-  border: solid 1px #303030;
   width: 4vw;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("yt-search.png");
 }
 
 .header .header-right .yt-3 {
