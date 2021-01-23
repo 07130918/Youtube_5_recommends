@@ -3,7 +3,8 @@ class JuntubesController < ApplicationController
   @@service.key = GOOGLE_API_KEY
 
   def index
-    # @youtube_search_items = youtube_search('加藤純一切り抜き').items
+    response = youtube_search('加藤純一切り抜き')
+    @items = response.items
   end
 
   private
@@ -14,6 +15,7 @@ class JuntubesController < ApplicationController
 
   def youtube_search(keyword)
     option = { q: keyword, type: 'video', max_results: 1, order: _order }
-    @@service.list_searches('snippet', option)
+    resopnse = @@service.list_searches('snippet', option)
+    return resopnse
   end
 end

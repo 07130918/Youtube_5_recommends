@@ -1,0 +1,17 @@
+<% @items.each do |i| %>
+  <% s = i.snippet %>
+  <div class="container">
+    <div class="youtube__cover">
+      <div class="youtube__content">
+        <div class="youtube__screen">
+          <iframe width="889" height="500" src="https://www.youtube.com/embed/<%= i.id.video_id %>" frameborder="no"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-status">
+          <div class="video_title"><%= s.title %></div>
+          <div class="video_date"><%= s.published_at.to_s.slice(0,10) %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
