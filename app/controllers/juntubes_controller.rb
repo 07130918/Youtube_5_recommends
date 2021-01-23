@@ -3,7 +3,7 @@ class JuntubesController < ApplicationController
   @@service.key = GOOGLE_API_KEY
 
   def index
-    @youtube_search_items = youtube_search('加藤純一切り抜き').items
+    # @youtube_search_items = youtube_search('加藤純一切り抜き').items
   end
 
   private
