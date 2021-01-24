@@ -1,6 +1,7 @@
 @import './parts/header';
 @import './parts/side-bar';
 @import './parts/swiper';
+@import './parts/materials';
 
 .body {
   position: relative;
@@ -27,8 +28,7 @@
 
   &__screen {
     margin-bottom: 6vh;
-    width: 889px;
-    height: 500px;
+    @extend .frame-screen;
   }
 
   &__screen-frame {
@@ -49,11 +49,9 @@
 
 .dummy-frame {
   position: relative;
-  width: 100%;
-  height: 500px;
+  @extend .frame-screen;
+  @extend .bg-center;
   background-image: url("1.jpg");
-  background-size: cover;
-  background-position: center;
   
   .copy-right {
     position: absolute;

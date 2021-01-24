@@ -1,3 +1,5 @@
+@import './materials';
+
 .header {
   display: flex;
   position: relative;
@@ -10,7 +12,7 @@
       position: relative;
       align-items: center;
       width: 17vw;
-      padding-left: 2vw;
+      padding-left: 2.4vw;
     }
 
     &__toggle {
@@ -72,23 +74,19 @@
     }
 
     &__btn {
+      @extend .bg-center;
       display: block;
       border: none;
       outline: none;
       background: transparent;
       height: 3.6vh;
       width: 4vw;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
       background-image: url("yt-search.png");
     }
   }
   .header-right {
     .yt-3 {
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+      @extend .bg-center;
       background-image: url("yt-3.png");
       position: absolute;
       right: 4vw;

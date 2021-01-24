@@ -1,7 +1,4 @@
 class JuntubesController < ApplicationController
-  @@service = Google::Apis::YoutubeV3::YouTubeService.new
-  @@service.key = GOOGLE_API_KEY
-
   def index
     response = youtube_search('加藤純一切り抜き')
     @items = response.items

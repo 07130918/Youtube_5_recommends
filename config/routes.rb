@@ -3,5 +3,4 @@ Rails.application.routes.draw do
   root 'youtube#index'
   resources :youtube, only: [:create]
   resources :juntubes, only: [:index]
-  resources :ts, only: [:index]
 end

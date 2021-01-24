@@ -1,7 +1,4 @@
 class YoutubeController < ApplicationController
-  @@service = Google::Apis::YoutubeV3::YouTubeService.new
-  @@service.key = GOOGLE_API_KEY
-
   def index
     youtube_data_api
   end
