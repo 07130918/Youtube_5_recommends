@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbolinks:load", () => {
   new Swiper(".swiper-container", {
     slidesPerView: 1,
     spaceBetween: 30,
