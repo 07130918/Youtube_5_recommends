@@ -18,3 +18,21 @@
 .hover {
   background-color: rgba(62, 62, 62, 0.7);
 }
+
+//js
+.side-bar-menu.open {
+  width: 80px;
+}
+.side-bar-menu__bottom__juntube.open {
+  display: none;
+}
+.side-bar-menu__bottom__oauth.open {
+  display: none;
+}
+.side-bar-menu__bottom__dev.open {
+  display: none;
+}
+.side-bar-menu__children.open p,
+.side-bar-menu__children.open a {
+  display: none;
+}

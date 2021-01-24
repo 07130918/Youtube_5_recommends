@@ -13,3 +13,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require('main.js')
+require('event.js')
