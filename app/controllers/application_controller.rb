@@ -5,4 +5,7 @@ class ApplicationController < ActionController::Base
   CLIENT_SECRET = ENV['CLIENT_SECRET']
   @@service = Google::Apis::YoutubeV3::YouTubeService.new
   @@service.key = ENV['GOOGLE_APP_SECRET']
+  puts "----------------------"
+  puts @@service.key
+  puts "----------------------"
 end
