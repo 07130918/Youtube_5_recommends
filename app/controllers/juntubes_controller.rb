@@ -1,8 +1,5 @@
 class JuntubesController < ApplicationController
   def index
-    puts "----------------------"
-    puts @@service.key
-    puts "----------------------"
     response = youtube_search('加藤純一切り抜き')
     @items = response.items
   end
