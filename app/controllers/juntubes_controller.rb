@@ -1,5 +1,7 @@
 class JuntubesController < ApplicationController
   def index
+    @@service = Google::Apis::YoutubeV3::YouTubeService.new
+    @@service.key = ENV['GOOGLE_APP_SECRET']
     puts "----------------------"
     puts @@service.key
     puts "----------------------"
