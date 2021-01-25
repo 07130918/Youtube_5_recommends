@@ -1,9 +1,9 @@
-# youtube 5 recommends  
+# [youtube 5 recommends](https://youtube5recommends.herokuapp.com/)  
 ##  近日中デプロイ予定!(現在Googleに申請中)
 *****
 
 このリポジトリを見てくれてありがとう!  
-このwebアプリのメイン機能はOAuth2.0の認証機能を利用してgoogleアカウントから利用者が過去に高評価した動画をとってくるというものです  
+このwebアプリのメイン機能はOAuth2.0の認証機能を利用してgoogleアカウントからあなたが過去に高評価した動画をとってくるというものです  
 OAuth認証を突破していないホーム画面はこのようになっています  
 UIはYouTubeになるべく寄せるようにしています パッと見はYouTube!!
 
