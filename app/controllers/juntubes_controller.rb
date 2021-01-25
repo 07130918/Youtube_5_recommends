@@ -7,7 +7,7 @@ class JuntubesController < ApplicationController
   private
   
   def _order
-    %w[rating relevance videoCount viewCount].sample
+    %w[relevance videoCount viewCount].sample
   end
 
   def youtube_search(keyword)
