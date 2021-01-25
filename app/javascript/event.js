@@ -6,7 +6,7 @@ document.addEventListener("turbolinks:load", () => {
   const oauth = document.querySelector('.side-bar-menu__bottom__oauth')
   const dev = document.querySelector('.side-bar-menu__bottom__dev')
   
-  function open(dom){
+  const open = (dom) => {
     dom.classList.toggle('open')
   }
   
